@@ -25,35 +25,7 @@ public class UserService : IUserService
         _userMapper = userMapper;
     }
 
-    // public async Task<User> QueryUserById(int userId)
-    // {
-    //     var user = await _context.Users
-    //         .Where(user => user.Id == userId)
-    //         .FirstOrDefaultAsync();
-    //
-    //     if (user == null) throw new ArgumentException("User not found.");
-    //
-    //     return user;
-    // }
 
-    // private async Task<User> QueryUserByUsername(string username)
-    // {
-    //     var user = await _context.Users
-    //         .Where(user => user.Username == username)
-    //         .FirstOrDefaultAsync();
-    //
-    //     if (user == null)
-    //         throw new ArgumentException("User not found.");
-    //
-    //     return user;
-    // }
-
-    // public async Task<UserResponse> QueryUserProfile(string username)
-    // {
-    //     var user = await QueryUserByUsername(username);
-    //     var userResponse = _userMapper.Map(user);
-    //     return userResponse;
-    // }
 
     public async Task<User> QueryPersonalAccount()
     {
@@ -70,11 +42,7 @@ public class UserService : IUserService
 
     public async Task<ShoppingCart> QueryPersonalShoppingCart()
         => (await QueryPersonalAccount()).ShoppingCart;
-
-    // public async Task<List<User>> QueryAllUsers() =>
-    //     await _context.Users
-    //         .ToListAsync();
-    //
+    
     public async Task<User?> QueryUserByEmail(string userEmail)
         => await _context.Users
             .Where(user => user.Email == userEmail)

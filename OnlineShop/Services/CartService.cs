@@ -5,7 +5,7 @@ using OnlineShop.Services.Interfaces;
 
 namespace OnlineShop.Services;
 
-public class CartService
+public class CartService : ICartService
 {
     private readonly IUserService _userService;
     private readonly OnlineShopContext _context;
@@ -42,12 +42,20 @@ public class CartService
             var newCartProduct = ConstructCartProduct(request);
             
             cart.AddProduct(newCartProduct);
+
+            _context.ShoppingCarts.Update(cart);
+            _context.CartProducts.Add(newCartProduct);
+
+            await _context.SaveChangesAsync();
             return cart;
         }
 
         if (request.Quantity  ==  0)
         {
             cart.RemoveProduct(request.ProductId);
+            
+            _context.ShoppingCarts.Update(cart);
+            await _context.SaveChangesAsync();
             return cart;
         }
         

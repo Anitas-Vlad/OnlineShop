@@ -1,13 +1,15 @@
-﻿namespace OnlineShop.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OnlineShop.Models;
 
 public class CartProduct
 {
     public int Id { get; set; }
-    public int ProductId { get; set; }
-    public string ProductName { get; set; }
-    public double PricePerProduct { get; set; }
-    public int Quantity { get; set; }
-    public double TotalPrice { get; set; }
+    [Required] public int ProductId { get; set; }
+    [Required] public string ProductName { get; set; }
+    [Required] public double PricePerProduct { get; set; }
+    [Required] public int Quantity { get; set; }
+    [Required] public double TotalPrice { get; set; }
 
     public void EditQuantity(int amount)
     {

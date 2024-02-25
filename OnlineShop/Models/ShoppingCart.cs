@@ -21,16 +21,4 @@ public class ShoppingCart
         CartProducts.Remove(product);
         TotalPrice -= product.TotalPrice;
     }
-
-    public void EditProductQuantity(int productId, int quantity)
-    {
-
-        var product = FindProductInCart(productId);
-        if (product == null)
-        {
-            
-        }
-    }
-    //TODO Add to cart when product already exists. (when you press buy one more time)
-    //TODO EditQuantity when product already exists in cart.
 }
